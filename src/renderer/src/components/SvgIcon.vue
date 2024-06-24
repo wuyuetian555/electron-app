@@ -1,5 +1,11 @@
 <template>
-  <svg class="svg-icon" aria-hidden="true">
+  <svg
+    :class="'svg-icon-' + icon"
+    aria-hidden="true"
+    class="svg-icon"
+    :style="{ 'font-size': size }"
+  >
+    <title>{{ title }}</title>
     <use :xlink:href="iconName"></use>
   </svg>
 </template>
@@ -10,7 +16,11 @@ const props = defineProps({
   icon: {
     type: String,
     required: true
-  }
+  },
+  title: {
+    type: String
+  },
+  size: { type: String }
 })
 
 const iconName = computed(() => {

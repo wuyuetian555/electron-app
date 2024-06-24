@@ -1,1 +1,10 @@
-<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1719163594089" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1131" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M64 576h896V448H64z" fill="#262626" p-id="1132"></path></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+  <rect x="10" y="17" width="16" height="2" fill="url(#paint1_linear)" />
+  <defs>
+    <linearGradient id="paint1_linear" x1="10" y1="17" x2="26" y2="17"
+      gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6D4AFF" />
+      <stop offset="1" stop-color="#704CFF" />
+    </linearGradient>
+  </defs>
+</svg>

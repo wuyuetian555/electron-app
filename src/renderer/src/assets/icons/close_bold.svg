@@ -1,1 +1,11 @@
-<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1719163613117" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1277" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M512 436.565333L762.282667 186.282667a53.333333 53.333333 0 0 1 75.434666 75.434666L587.434667 512l250.282666 250.282667a53.333333 53.333333 0 0 1-75.434666 75.434666L512 587.434667 261.717333 837.717333a53.333333 53.333333 0 0 1-75.434666-75.434666L436.565333 512 186.282667 261.717333a53.333333 53.333333 0 0 1 75.434666-75.434666L512 436.565333z" fill="#000000" p-id="1278"></path></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+  <line x1="10" y1="10" x2="26" y2="26" stroke="url(#paint4_linear)" stroke-width="2" />
+  <line x1="10" y1="26" x2="26" y2="10" stroke="url(#paint4_linear)" stroke-width="2" />
+  <defs>
+    <linearGradient id="paint4_linear" x1="10" y1="10" x2="26" y2="26"
+      gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6D4AFF" />
+      <stop offset="1" stop-color="#704CFF" />
+    </linearGradient>
+  </defs>
+</svg>
