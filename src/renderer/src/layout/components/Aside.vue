@@ -1,11 +1,15 @@
 <template>
   <div class="aside">
     <svg-icon icon="music" size="32px"></svg-icon>
-    <svg-icon icon="clipboard" size="32px"></svg-icon>
+    <svg-icon icon="clipboard" size="32px" @click="createWindow"></svg-icon>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const createWindow = () => {
+  window.api.createNewWindow('music', { route: 'clipboard' })
+}
+</script>
 
 <style scoped lang="scss">
 .aside {
@@ -24,7 +28,7 @@
     margin-bottom: 25px;
     cursor: pointer;
     &:hover {
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: rgba(255, 255, 255, 1);
     }
   }
 }

@@ -4,7 +4,8 @@ import { electronAPI } from '@electron-toolkit/preload'
 const api = {
   windowOp: (action, closeType) => ipcRenderer.send('window-op', action, closeType),
   onWindowMaximized: (callback) => ipcRenderer.on('window-maximized', callback),
-  onWindowUnmaximized: (callback) => ipcRenderer.on('window-unmaximized', callback)
+  onWindowUnmaximized: (callback) => ipcRenderer.on('window-unmaximized', callback),
+  createNewWindow: (name, options) => ipcRenderer.send('create-window', name, options)
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

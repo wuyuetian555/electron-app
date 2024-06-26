@@ -1,4 +1,5 @@
 import { ipcMain, BrowserWindow } from 'electron'
+import windowsManager from './windowsManager'
 export const windowOperation = () => {
   ipcMain.on('window-op', (event, action, closeType) => {
     const currentWindow = BrowserWindow.fromWebContents(event.sender)
@@ -18,5 +19,12 @@ export const windowOperation = () => {
       default:
         break
     }
+  })
+}
+export const createNewWindow = () => {
+  ipcMain.on('create-window', (event, name, options) => {
+    console.log(name, options)
+    const window = new windowsManager(name, options)
+    window.createWindow(name, options)
   })
 }

@@ -1,45 +1,10 @@
-import { app, shell, BrowserWindow, session } from 'electron'
-import { join } from 'path'
-import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import icon from '../../resources/th.jpg?asset'
-import { windowOperation } from './utils/windowOperation.js'
+import { app, BrowserWindow, session } from 'electron'
+import { electronApp, optimizer } from '@electron-toolkit/utils'
+import { windowOperation, createNewWindow } from './utils/windowOperation.js'
+import windowsManager from './utils/windowsManager.js'
 function createWindow() {
-  const mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 670,
-    show: false,
-    autoHideMenuBar: true,
-    icon: icon,
-    titleBarStyle: 'hidden',
-    webPreferences: {
-      preload: join(__dirname, '../preload/index.js'),
-      sandbox: false,
-      contextIsolation: false
-    }
-  })
-
-  mainWindow.on('ready-to-show', (e) => {
-    console.log(e)
-    mainWindow.show()
-  })
-
-  mainWindow.webContents.setWindowOpenHandler((details) => {
-    shell.openExternal(details.url)
-    return { action: 'deny' }
-  })
-  mainWindow.on('maximize', () => {
-    mainWindow.webContents.send('window-maximized')
-  })
-
-  mainWindow.on('unmaximize', () => {
-    mainWindow.webContents.send('window-unmaximized')
-  })
-
-  if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
-    mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
-  } else {
-    mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
-  }
+  const window = new windowsManager()
+  window.createWindow('mainWindow')
 }
 
 app.whenReady().then(() => {
@@ -63,6 +28,7 @@ app.whenReady().then(() => {
   createWindow()
   //添加监听事件
   windowOperation()
+  createNewWindow()
   //
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
