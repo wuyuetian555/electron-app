@@ -40,7 +40,6 @@ import { ref } from 'vue'
 const isMaximized = ref(false)
 const closeType = ref(0)
 const windowOperation = (action) => {
-  console.log(window.api)
   window.api.windowOp(action, closeType)
 }
 window.api.onWindowMaximized(() => {
@@ -58,7 +57,8 @@ window.api.onWindowUnmaximized(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  background: linear-gradient(135deg, rgba(255, 213, 128, 0.2), rgba(112, 76, 255, 0.3));
+  padding: 0px 10px 0 10px;
   .header-title {
     display: flex;
     align-items: center;
@@ -67,6 +67,18 @@ window.api.onWindowUnmaximized(() => {
       font-weight: bold;
       font-family: 'Courier New', Courier, monospace;
       cursor: default;
+    }
+  }
+  .header-operate {
+    .svg-icon {
+      border-radius: 8px;
+      transition: all 0.2s;
+      margin-bottom: 25px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+      }
     }
   }
 }

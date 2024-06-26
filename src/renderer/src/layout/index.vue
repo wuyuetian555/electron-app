@@ -1,11 +1,13 @@
 <template>
   <div class="common-layout">
     <el-container style="height: 100vh">
-      <el-header style="padding: 0px 10px 0 10px">
+      <el-header style="padding: 0px">
         <Header></Header>
       </el-header>
       <el-container>
-        <el-aside></el-aside>
+        <el-aside>
+          <Aside></Aside>
+        </el-aside>
         <el-main></el-main>
       </el-container>
     </el-container>
@@ -13,13 +15,14 @@
 </template>
 <script setup>
 import Header from './components/Header.vue'
+import Aside from './components/Aside.vue'
 </script>
 <style scoped lang="scss">
 .el-aside {
-  flex: 1;
+  max-width: 50px;
 }
 
 .el-main {
-  flex: 3;
+  flex: 1;
 }
 </style>
