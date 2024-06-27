@@ -7,7 +7,13 @@
 
 <script setup>
 const createWindow = () => {
-  window.api.createNewWindow('music', { route: 'clipboard' })
+  window.api.createNewWindow('music', {
+    route: 'clipboardUtil',
+    width: 310,
+    height: 420,
+    resizable: false
+    // alwaysOnTop: true
+  })
 }
 </script>
 

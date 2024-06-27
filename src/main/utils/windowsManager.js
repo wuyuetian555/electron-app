@@ -23,6 +23,15 @@ class windowsManager {
     this.windows[name] = window
   }
   createWindow(name, options) {
+    // 判断窗口是否存在
+    for (let i in this.windows) {
+      if (i === name) {
+        console.log(this.windows[i])
+        this.windows[i].focus()
+        return
+      }
+    }
+
     const newWindow = new BrowserWindow({
       width: 1200,
       height: 670,

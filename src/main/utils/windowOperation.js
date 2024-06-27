@@ -23,7 +23,6 @@ export const windowOperation = () => {
 }
 export const createNewWindow = () => {
   ipcMain.on('create-window', (event, name, options) => {
-    console.log(name, options)
     const window = new windowsManager(name, options)
     window.createWindow(name, options)
   })
