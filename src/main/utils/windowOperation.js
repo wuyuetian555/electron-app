@@ -5,7 +5,7 @@ export const windowOperation = () => {
     const currentWindow = BrowserWindow.fromWebContents(event.sender)
     switch (action) {
       case 'close':
-        currentWindow.close()
+        currentWindow.hide()
         break
       case 'unmaximize':
         currentWindow.unmaximize()

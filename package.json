@@ -25,6 +25,7 @@
     "element-plus": "^2.7.6",
     "markdown-it": "^14.1.0",
     "markdown-it-highlightjs": "^4.1.0",
+    "naive-ui": "^2.38.2",
     "pinia": "^2.1.7",
     "vue-router": "^4.4.0"
   },
@@ -32,6 +33,7 @@
     "@electron-toolkit/eslint-config": "^1.0.1",
     "@rushstack/eslint-patch": "^1.6.1",
     "@vitejs/plugin-vue": "^5.0.3",
+    "@vitejs/plugin-vue-jsx": "^4.0.0",
     "@vue/eslint-config-prettier": "^9.0.0",
     "electron": "^28.2.0",
     "electron-builder": "^24.9.1",
