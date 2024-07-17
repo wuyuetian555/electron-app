@@ -1,11 +1,23 @@
-import { app, BrowserWindow, session, Menu, Tray } from 'electron'
+import { app, BrowserWindow, session, Menu, Tray, nativeImage, globalShortcut } from 'electron'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
 import { windowOperation, createNewWindow } from './utils/windowOperation.js'
-import windowsManager from './utils/windowsManager.js'
+import { initGlobalShortcut } from './utils/globalShortcut.js'
+import WindowsManager from './utils/windowsManager.js'
 import icon from '../../resources/th.jpg?asset'
 function createWindow() {
-  const window = new windowsManager()
-  window.createWindow('mainWindow')
+  const window = new WindowsManager()
+  // 创建主窗口
+  const mainWindow = window.createWindow('mainWindow')
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show()
+  })
+  // 创建剪切板窗口
+  window.createWindow('clipboard', {
+    route: 'clipboardUtil',
+    width: 310,
+    height: 420,
+    resizable: false
+  })
 }
 
 let tray = null
@@ -31,7 +43,12 @@ app.whenReady().then(() => {
   tray = new Tray(icon)
   const contextMenu = Menu.buildFromTemplate([
     {
-      label: '退出',
+      label: '退出精灵小助手',
+      icon: nativeImage.createFromPath(icon).resize({
+        width: 16,
+        height: 16,
+        quality: 'best'
+      }),
       click: () => {
         app.exit()
       }
@@ -39,10 +56,12 @@ app.whenReady().then(() => {
   ])
   tray.setToolTip('This is my application.')
   tray.on('click', () => {
-    windowsManager.getInstance().windows.mainWindow.show()
+    WindowsManager.getInstance().windows.mainWindow.show()
   })
   tray.setContextMenu(contextMenu)
 
+  // 注册快捷键
+  initGlobalShortcut()
   //创建主窗口
   createWindow()
   //添加监听事件
@@ -58,4 +77,8 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
+})
+app.on('will-quit', () => {
+  // 注销所有快捷键
+  globalShortcut.unregisterAll()
 })

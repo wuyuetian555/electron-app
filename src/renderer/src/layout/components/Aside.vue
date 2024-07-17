@@ -1,21 +1,11 @@
 <template>
   <div class="aside">
     <svg-icon icon="music" size="32px"></svg-icon>
-    <svg-icon icon="clipboard" size="32px" @click="createWindow"></svg-icon>
+    <svg-icon icon="clipboard" size="32px"></svg-icon>
   </div>
 </template>
 
-<script setup>
-const createWindow = () => {
-  window.api.createNewWindow('music', {
-    route: 'clipboardUtil',
-    width: 310,
-    height: 420,
-    resizable: false
-    // alwaysOnTop: true
-  })
-}
-</script>
+<script setup></script>
 
 <style scoped lang="scss">
 .aside {

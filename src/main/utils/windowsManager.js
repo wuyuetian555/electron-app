@@ -5,33 +5,35 @@ import icon from '../../../resources/th.jpg?asset'
 const isDev = is.dev && process.env['ELECTRON_RENDERER_URL']
 const loadURLDev = process.env['ELECTRON_RENDERER_URL']
 const loadFileDev = join(__dirname, '../../renderer/index.html')
-class windowsManager {
+class WindowsManager {
+  static instance = null
+  windows = {}
   constructor() {
-    if (windowsManager.instance) {
-      return windowsManager.instance
+    if (WindowsManager.instance) {
+      return WindowsManager.instance
     }
-    this.windows = {}
-    windowsManager.instance = this
+    WindowsManager.instance = this
   }
   static getInstance() {
-    if (!windowsManager.instance) {
-      windowsManager.instance = new windowsManager()
+    if (!WindowsManager.instance) {
+      WindowsManager.instance = new WindowsManager()
     }
-    return windowsManager.instance
+    return WindowsManager.instance
+  }
+  static getWindowInstance(name) {
+    if (!WindowsManager.instance) {
+      WindowsManager.instance = new WindowsManager()
+    }
+    return WindowsManager.instance.windows[name]
   }
   addWindow(name, window) {
     this.windows[name] = window
   }
   createWindow(name, options) {
     // 判断窗口是否存在
-    for (let i in this.windows) {
-      if (i === name) {
-        console.log(this.windows[i])
-        this.windows[i].focus()
-        return
-      }
+    if (this.windows[name]) {
+      return this.windows[name]
     }
-
     const newWindow = new BrowserWindow({
       width: 1200,
       height: 670,
@@ -47,9 +49,6 @@ class windowsManager {
       ...options
     })
     this.addWindow(name, newWindow)
-    newWindow.once('ready-to-show', () => {
-      newWindow.show()
-    })
     newWindow.webContents.setWindowOpenHandler((details) => {
       shell.openExternal(details.url)
       return { action: 'deny' }
@@ -64,13 +63,13 @@ class windowsManager {
     newWindow.on('closed', () => {
       delete this.windows[name]
     })
-
     if (isDev) {
       newWindow.loadURL(options?.route ? `${loadURLDev}#/${options.route}` : loadURLDev)
     } else {
       newWindow.loadFile(options?.route ? `${loadFileDev}#/${options.route}` : loadFileDev)
     }
+    return newWindow
   }
 }
 
-export default windowsManager
+export default WindowsManager
