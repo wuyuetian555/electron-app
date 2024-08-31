@@ -10,7 +10,10 @@ console.log(lightTheme)
 const themeOverrides = {
   common: {
     primaryColor: 'rgba(112, 76, 255, 1)',
-    textColor: '#f00'
+    primaryColorHover: 'rgba(112, 76, 255, .5)',
+    primaryColorPressed: 'rgba(112, 76, 255, .8)',
+    fontSizeSmall: '12px',
+    fontSizeMedium: '12px'
   },
   Button: {
     textColor: '#FF0000'
@@ -20,6 +23,12 @@ const themeOverrides = {
       InternalSelection: {
         textColor: '#FF0000'
       }
+    }
+  },
+  Tabs: {
+    common: {
+      fontSize: '13px',
+      fontSizeMedium: '13px'
     }
   }
 }

@@ -1,17 +1,19 @@
 <template>
   <div class="clipboard">
     <div class="clipboard-header drag">
+      <span></span>
+      <span class="clipboard-heade-title">剪切板</span>
       <HeaderOperate :minus="false" :maximize="false"></HeaderOperate>
     </div>
-    <n-space>
-      <n-button>Default</n-button>
-      <n-button type="tertiary"> Tertiary </n-button>
-      <n-button type="primary"> Primary </n-button>
-      <n-button type="info"> Info </n-button>
-      <n-button type="success"> Success </n-button>
-      <n-button type="warning"> Warning </n-button>
-      <n-button type="error"> Error </n-button>
-    </n-space>
+    <div class="clipboard-container">
+      <div>
+        <n-input round size="small" placeholder="搜索" clearable>
+          <template #suffix>
+            <n-icon :component="FlashOutline" />
+          </template>
+        </n-input>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -23,8 +25,22 @@ import HeaderOperate from '../../components/HeaderOperate.vue'
 .clipboard {
   .clipboard-header {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
     background: linear-gradient(135deg, rgba(255, 213, 128, 0.2), rgba(112, 76, 255, 0.3));
+    padding: 5px;
+    span,
+    .header-operate {
+      flex: 1;
+      text-align: center;
+    }
+    .header-operate {
+      text-align: right;
+    }
+    .clipboard-heade-title {
+      color: #000;
+    }
+  }
+  .clipboard-container {
     padding: 5px;
   }
 }
